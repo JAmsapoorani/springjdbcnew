@@ -15,7 +15,7 @@ public class EmployeeDao {
     }
 
     public Boolean saveEmployeeByPreparedStatement(final Employee e){
-        String query="insert into employee values(?,?,?)";
+        String query="insert into emp1 values(?,?,?)";
         return jdbcTemplate.execute(query,new PreparedStatementCallback<Boolean>(){
             @Override
             public Boolean doInPreparedStatement(PreparedStatement ps)
@@ -29,7 +29,15 @@ public class EmployeeDao {
 
             }
         });
+
+    }
+    public int updateEmployee(Employee e){
+        String query="update emp1 set name='"+e.getName()+"',salary='"+e.getSalary()+"' where id='"+e.getId()+"' ";
+        return jdbcTemplate.update(query);
     }
 
-
+    public int deleteEmployee(Employee e) {
+        String query="delete from emp1 where id='"+e.getId()+"' ";
+        return jdbcTemplate.update(query);
+    }
 }

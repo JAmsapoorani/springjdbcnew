@@ -14,7 +14,15 @@ public class SpringjdbcnewApplication {
 		ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
 
 		EmployeeDao dao=(EmployeeDao)ctx.getBean("edao");
-		dao.saveEmployeeByPreparedStatement(new Employee(108,"Amit",35000));
+		dao.saveEmployeeByPreparedStatement(new Employee(102,"Amit",35000));
+		dao.saveEmployeeByPreparedStatement(new Employee(103,"Amitkumaf",55000));
+		int status=dao.updateEmployee(new Employee(102,"Sonoo",15000));
+		System.out.println(status);
+		Employee e=new Employee();
+		e.setId(101);
+		int status1=dao.deleteEmployee(e);
+		System.out.println(status1);
 	}
+
 
 }
